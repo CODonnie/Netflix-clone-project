@@ -1,14 +1,24 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import './TitleCards.css'
-import card_data from '../../assets/cards/Cards_data'
+// import card_data from '../../assets/cards/Cards_data'
 
 
 
 
 const TitleCards = ({title, category}) => {
 
+  const [apiData, setApiData] = useState([])
   const cardsRef = useRef();
+
+  const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YWM2OWQ2ZTA5NDU5Y2NhNmQ1NzBmMGE0MWM3ZDgyMyIsIm5iZiI6MTcyNjQ3MzUxMy4zMDcyMDYsInN1YiI6IjY2ZTcxNjZlZTgyMTFlY2QyMmIwYTBjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Z6KJiCdBKzGzSCj15I4ut_9eTHdnoVLx_LKjaLYb8hM'
+  }
+};
 
   const handleWheel = (event) => {
     event.preventDefault();
@@ -16,22 +26,36 @@ const TitleCards = ({title, category}) => {
   }
 
   useEffect(() => {
+
+    fetch(`https://api.themoviedb.org/3/movie/${category?category:"now_playing"}?language=en-US&page=1`, options)
+    .then(response => response.json())
+    .then(response => {
+      setApiData(response.results)
+      console.log(response.results)
+    })
+    .catch(err => console.error(err));
     cardsRef.current.addEventListener('wheel', handleWheel);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   return (
     <div className='title-cards'>
       <h2>{title ? title : 'Popular on Netflix'}</h2>
       <div className="card-list" ref={cardsRef}>
-        {card_data.map((card, index) => {
+        {apiData.map((card, index) => {
           return <div className="card" key={index}>
-            <img src={card.image} alt='' />
-            <p>{card.name}</p>
+            <img src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path} alt='' />
+            <p>{card.original_title}</p>
           </div>
         })}
       </div>
     </div>
   )
+}
+
+TitleCards.propTypes = {
+  title: PropTypes.string,
+  category: PropTypes.string
 }
 
 export default TitleCards
