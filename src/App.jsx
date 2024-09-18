@@ -9,6 +9,9 @@ import { auth } from './firebase'
 // eslint-disable-next-line no-unused-vars
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NavLinks from './pages/NavLinks/NavLinks'
+import logo from '../public/netflix_favicon.ico'
+import banner from '../public/background_banner.jpg'
 
 const App = () => {
 
@@ -24,6 +27,7 @@ const App = () => {
         navigate('/login');
       }
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -31,6 +35,9 @@ const App = () => {
     <ToastContainer theme='dark'/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/tvshows' element={<NavLinks title='TvShows' logo={logo} banner={banner} category="tv"/>}/>
+        <Route path='/movies' element={<NavLinks title='Movies' logo={logo} banner={banner} category="movie"/>}/>
+        <Route path='/popular' element={<NavLinks title='Popular' logo={logo} banner={banner} category="all"/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/player/:id' element={<Player/>}/>
       </Routes>
