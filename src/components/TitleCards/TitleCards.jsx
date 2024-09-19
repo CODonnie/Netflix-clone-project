@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import './TitleCards.css'
-import apiHeader from '../../assets/apiHeader'
+// import apiHeader from '../../assets/apiHeader'
 import { Link } from 'react-router-dom'
 // import card_data from '../../assets/cards/Cards_data'
 
@@ -17,7 +17,10 @@ const TitleCards = ({title, category}) => {
   
   const options = {
   method: 'GET',
-  headers: apiHeader,
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YWM2OWQ2ZTA5NDU5Y2NhNmQ1NzBmMGE0MWM3ZDgyMyIsIm5iZiI6MTcyNjQ3MzUxMy4zMDcyMDYsInN1YiI6IjY2ZTcxNjZlZTgyMTFlY2QyMmIwYTBjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Z6KJiCdBKzGzSCj15I4ut_9eTHdnoVLx_LKjaLYb8hM'
+  },
 };
 
   const handleWheel = (event) => {

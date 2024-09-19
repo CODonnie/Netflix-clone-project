@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import './MovieCards.css'
 import PropTypes from 'prop-types'
-import apiHeader from '../../assets/apiHeader';
+// import apiHeader from '../../assets/apiHeader';
 import { Link } from 'react-router-dom';
 
 const MovieCards = ({category}) => {
@@ -13,7 +13,10 @@ const MovieCards = ({category}) => {
 
     const options = {
         method: 'GET',
-        headers: apiHeader
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YWM2OWQ2ZTA5NDU5Y2NhNmQ1NzBmMGE0MWM3ZDgyMyIsIm5iZiI6MTcyNjQ3MzUxMy4zMDcyMDYsInN1YiI6IjY2ZTcxNjZlZTgyMTFlY2QyMmIwYTBjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Z6KJiCdBKzGzSCj15I4ut_9eTHdnoVLx_LKjaLYb8hM'
+          },
       };
     
      useEffect(() => {
