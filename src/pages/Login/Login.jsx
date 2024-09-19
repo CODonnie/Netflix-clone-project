@@ -21,7 +21,7 @@ const Login = () => {
     }else{
       await signUp(name, email, password);
     }
-    setLoading(true);
+    setLoading(false);
   }
 
   

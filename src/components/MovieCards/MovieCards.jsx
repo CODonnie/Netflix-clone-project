@@ -38,7 +38,7 @@ const MovieCards = ({category}) => {
     <div className='moviecards'>
         {catData.map((card, i) => {
             return (
-                <Link style={sty} className='card' key={i}>
+                <Link to={`/player/${card.id}`} style={sty} className='card' key={i}>
                     <img src={`https://image.tmdb.org/t/p/w500` + card.poster_path} alt="" />
                     <h2>{card.original_title}</h2>
                 </Link>
