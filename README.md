@@ -61,7 +61,7 @@ This project is a Netflix clone built using React JS, Firebase for authenticatio
     npm start
     ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### Firebase Setup
 
@@ -84,12 +84,11 @@ This project is a Netflix clone built using React JS, Firebase for authenticatio
 ├── public/
 │   └── index.html
 ├── src/
+│   ├── assets/        # Project Assets
 │   ├── components/    # Reusable UI components
 │   ├── pages/         # Main pages (e.g., Home, Login)
-│   ├── services/      # API service files (e.g., TMDB, Firebase)
 │   ├── App.js         # Main app component
-│   ├── index.js       # Entry point
-│   └── .env           # Environment variables
+│   └── index.js       # Entry point
 └── package.json
 ```
 
